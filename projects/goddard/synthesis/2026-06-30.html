@@ -8,8 +8,8 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: #f2f2f2;
-    color: #1a1a1a;
+    background: #0d0d0d;
+    color: #d4d4d4;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.6;
@@ -26,7 +26,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #999;
+    color: #555;
     margin-bottom: 20px;
   }
 
@@ -38,12 +38,12 @@
     font-size: 44px;
     font-weight: 800;
     line-height: 1.1;
-    color: #111;
+    color: #fff;
     margin: 8px 0 12px;
   }
 
   .title-block .subtitle {
-    color: #888;
+    color: #555;
     font-size: 15px;
   }
 
@@ -56,47 +56,39 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #aaa;
+    color: #555;
     margin-bottom: 20px;
   }
 
   .card {
-    background: #fff;
+    background: #1a1a1a;
     border-radius: 10px;
     padding: 24px 28px;
     margin-bottom: 10px;
-    color: #333;
+    color: #bbb;
     font-size: 15px;
     line-height: 1.7;
   }
 
-  .card.tinted-green  { background: #f0fdf4; }
-  .card.tinted-red    { background: #fef2f2; }
-  .card.tinted-blue   { background: #eff6ff; }
-  .card.tinted-orange { background: #fffbeb; }
+  .green  { color: #4ade80; }
+  .red    { color: #f87171; }
+  .blue   { color: #60a5fa; }
+  .orange { color: #fbbf24; }
+  .purple { color: #a78bfa; }
+  .muted  { color: #555; }
 
-  .green  { color: #16a34a; }
-  .red    { color: #dc2626; }
-  .blue   { color: #2563eb; }
-  .orange { color: #d97706; }
-  .purple { color: #7c3aed; }
-  .muted  { color: #888; }
-
-  .highlight { font-weight: 600; }
-
-  /* bullet list inside card */
   .card ul {
     list-style: none;
     padding: 0;
   }
 
   .card ul li {
-    padding: 9px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     font-size: 15px;
-    color: #333;
+    color: #bbb;
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: flex-start;
   }
 
@@ -104,13 +96,13 @@
 
   .card ul li::before {
     content: "—";
-    color: #ccc;
+    color: #333;
     flex-shrink: 0;
   }
 
   /* decision cards */
   .decision-card {
-    background: #fff;
+    background: #1a1a1a;
     border-radius: 10px;
     padding: 20px 28px;
     margin-bottom: 10px;
@@ -120,58 +112,58 @@
   }
 
   .decision-card .d-icon {
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 700;
-    color: #7c3aed;
-    background: #f5f3ff;
+    color: #a78bfa;
+    background: #1e1530;
     border-radius: 6px;
     padding: 4px 10px;
     flex-shrink: 0;
-    margin-top: 2px;
-    letter-spacing: 0.05em;
+    margin-top: 3px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .decision-card .d-text {
     font-size: 15px;
-    color: #333;
+    color: #bbb;
     line-height: 1.6;
   }
 
   .decision-card .d-text strong {
-    color: #111;
+    color: #e5e5e5;
     font-weight: 600;
   }
 
   /* metric card */
   .metric-card {
-    background: #fff;
+    background: #1a1a1a;
     border-radius: 10px;
-    padding: 24px 28px;
+    padding: 28px 32px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
   }
 
   .metric-number {
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 800;
-    color: #16a34a;
+    color: #4ade80;
     line-height: 1;
     flex-shrink: 0;
   }
 
   .metric-label {
     font-size: 15px;
-    color: #555;
+    color: #888;
     line-height: 1.5;
   }
 
   .metric-label strong {
     display: block;
     font-size: 16px;
-    color: #111;
-    margin-bottom: 2px;
+    color: #e5e5e5;
+    margin-bottom: 4px;
   }
 
   /* action items */
@@ -183,33 +175,33 @@
   .action-list li {
     display: flex;
     gap: 14px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     font-size: 15px;
-    color: #333;
+    color: #bbb;
     align-items: flex-start;
   }
 
   .action-list li:last-child { border-bottom: none; }
 
-  .action-list .who {
+  .who {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 3px 8px;
+    padding: 3px 9px;
     border-radius: 4px;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
-  .who.john   { background: #eff6ff; color: #2563eb; }
-  .who.ohm    { background: #f5f3ff; color: #7c3aed; }
-  .who.both   { background: #f0fdf4; color: #16a34a; }
+  .who.john   { background: #0c1f3d; color: #60a5fa; }
+  .who.ohm    { background: #1e1530; color: #a78bfa; }
+  .who.both   { background: #0f2d1a; color: #4ade80; }
 
   hr {
     border: none;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid rgba(255,255,255,0.07);
     margin: 44px 0;
   }
 </style>
@@ -256,7 +248,7 @@
 
     <div class="decision-card">
       <span class="d-icon">Locked</span>
-      <div class="d-text"><strong>Carousel posts are cleared between John and Ohm only.</strong> No director approval needed for news carousels — keeps the cadence daily.</div>
+      <div class="d-text"><strong>Carousel posts cleared between John and Ohm only.</strong> No director approval needed for news carousels — keeps the cadence daily.</div>
     </div>
   </div>
 
