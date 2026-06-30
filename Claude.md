@@ -80,6 +80,12 @@ Build skills organically as recurring workflows emerge — not speculatively.
 
 ---
 
+## Research
+
+`research/` — Notes, findings, and raw material from research sessions. Organized by topic as needed.
+
+---
+
 ## References
 
 `references/sops/` — Standard operating procedures
