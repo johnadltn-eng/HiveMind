@@ -25,6 +25,7 @@ Live in `projects/`. Each has a README with status and key dates.
 - `projects/rep-outreach/` — Manager search via IMDb Pro
 - `projects/marketing-clients/` — Closing 2-3 new retainer clients
 - `projects/stq-infrastructure/` — Branding and channel cleanup
+- `projects/goddard/` — Goddard School Wesley Chapel (marketing client, weekly content + reporting)
 
 ---
 
@@ -64,6 +65,8 @@ Build skills organically as recurring workflows emerge — not speculatively.
 
 **Skills Backlog** (from onboarding — build these as needed):
 
+- `goddard-synthesis` — Weekly report from Ohm call transcript, sent to D/Roshanda/Dinesh
+- `goddard-news-carousel` — Daily Wesley Chapel news carousel for Goddard Instagram
 - `content-rollout` — Hayden post first, collab to personal after 24h, SMS as artifact, story as connective tissue
 - `manager-outreach` — Standard template for manager/producer prospecting
 - `voice-memo-to-doc` — Convert rambling sessions or voice memos into clean structured notes
