@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goddard Weekly Update — June 30, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f2f2f2;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 60px 20px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .title-block {
+    margin-bottom: 60px;
+  }
+
+  .title-block h1 {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111;
+    margin: 8px 0 12px;
+  }
+
+  .title-block .subtitle {
+    color: #888;
+    font-size: 15px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-green  { background: #f0fdf4; }
+  .card.tinted-red    { background: #fef2f2; }
+  .card.tinted-blue   { background: #eff6ff; }
+  .card.tinted-orange { background: #fffbeb; }
+
+  .green  { color: #16a34a; }
+  .red    { color: #dc2626; }
+  .blue   { color: #2563eb; }
+  .orange { color: #d97706; }
+  .purple { color: #7c3aed; }
+  .muted  { color: #888; }
+
+  .highlight { font-weight: 600; }
+
+  /* bullet list inside card */
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .card ul li:last-child { border-bottom: none; }
+
+  .card ul li::before {
+    content: "—";
+    color: #ccc;
+    flex-shrink: 0;
+  }
+
+  /* decision cards */
+  .decision-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 28px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .decision-card .d-icon {
+    font-size: 13px;
+    font-weight: 700;
+    color: #7c3aed;
+    background: #f5f3ff;
+    border-radius: 6px;
+    padding: 4px 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .decision-card .d-text {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .decision-card .d-text strong {
+    color: #111;
+    font-weight: 600;
+  }
+
+  /* metric card */
+  .metric-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .metric-number {
+    font-size: 40px;
+    font-weight: 800;
+    color: #16a34a;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .metric-label {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .metric-label strong {
+    display: block;
+    font-size: 16px;
+    color: #111;
+    margin-bottom: 2px;
+  }
+
+  /* action items */
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 15px;
+    color: #333;
+    align-items: flex-start;
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+
+  .action-list .who {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .who.john   { background: #eff6ff; color: #2563eb; }
+  .who.ohm    { background: #f5f3ff; color: #7c3aed; }
+  .who.both   { background: #f0fdf4; color: #16a34a; }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 44px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="label">Goddard School Wesley Chapel · Weekly Update</div>
+    <h1>Week of June 30, 2026</h1>
+    <div class="subtitle">Prepared by John Dalton & Ohm Patel · For D, Roshanda, and Dinesh</div>
+  </div>
+
+  <hr>
+
+  <!-- WHAT WE DID -->
+  <div class="section">
+    <div class="section-label">What We Did This Week</div>
+    <div class="card">
+      <ul>
+        <li>Switched our Instagram strategy back to replicating high-performing posts from other Goddard schools — simpler, consistent, and proven to work</li>
+        <li>Launched a new content type: Wesley Chapel local news carousels, posted regularly to grow the account with local parents organically</li>
+        <li>Set up call recording (Fathom) so every strategy decision gets documented going forward</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- DECISIONS -->
+  <div class="section">
+    <div class="section-label">Decisions Made</div>
+
+    <div class="decision-card">
+      <span class="d-icon">Locked</span>
+      <div class="d-text"><strong>One revision max per video, then it posts.</strong> Cuts back-and-forth and keeps content moving.</div>
+    </div>
+
+    <div class="decision-card">
+      <span class="d-icon">Locked</span>
+      <div class="d-text"><strong>Ohm visits once a month for a batch shoot (3–4 reels).</strong> More efficient than weekly visits — same output, less overhead.</div>
+    </div>
+
+    <div class="decision-card">
+      <span class="d-icon">Locked</span>
+      <div class="d-text"><strong>Carousel posts are cleared between John and Ohm only.</strong> No director approval needed for news carousels — keeps the cadence daily.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- RESULTS -->
+  <div class="section">
+    <div class="section-label">Results</div>
+    <div class="metric-card">
+      <div class="metric-number">~1K</div>
+      <div class="metric-label">
+        <strong>Happy Feet collab post — views in one day</strong>
+        Tagging the local company drove the spike. Replicating this with Topspin Tampa next.
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- NEXT WEEK -->
+  <div class="section">
+    <div class="section-label">Next Week</div>
+    <div class="card">
+      <ul class="action-list">
+        <li>
+          <span class="who ohm">Ohm</span>
+          Upload last 2 months of footage to Drive and share access with D, Roshanda, and Dinesh
+        </li>
+        <li>
+          <span class="who ohm">Ohm</span>
+          Call Dinesh about finding an in-house teacher to film one reel per week
+        </li>
+        <li>
+          <span class="who ohm">Ohm</span>
+          Post Topspin Tampa collab carousel and tag them
+        </li>
+        <li>
+          <span class="who ohm">Ohm</span>
+          Add Google Business posts for VPK voucher, School Readiness, and Step Up scholarships
+        </li>
+        <li>
+          <span class="who john">John</span>
+          Build the Wesley Chapel news carousel workflow and post the first one
+        </li>
+        <li>
+          <span class="who john">John</span>
+          Edit general reels from Ohm's footage, add Goddard logo, send to group chat
+        </li>
+        <li>
+          <span class="who both">Both</span>
+          Confirm intake process asks "How did you hear about us?" — if not, get it added ASAP
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
