@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP Title</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f2f2f2;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 60px 20px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ── Section labels ── */
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  /* ── Title block ── */
+  .title-block {
+    margin-bottom: 60px;
+  }
+
+  .title-block h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111;
+    margin: 8px 0 12px;
+  }
+
+  .title-block .subtitle {
+    color: #888;
+    font-size: 15px;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 24px;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-green  { background: #f0fdf4; }
+  .card.tinted-red    { background: #fef2f2; }
+  .card.tinted-blue   { background: #eff6ff; }
+  .card.tinted-orange { background: #fffbeb; }
+  .card.tinted-purple { background: #f5f3ff; }
+  .card.tinted-gray   { background: #f8f8f8; }
+
+  /* ── Accent text colors ── */
+  .green  { color: #16a34a; }
+  .red    { color: #dc2626; }
+  .blue   { color: #2563eb; }
+  .orange { color: #d97706; }
+  .purple { color: #7c3aed; }
+  .muted  { color: #888; }
+
+  /* ── Highlighted inline text ── */
+  .highlight {
+    font-weight: 600;
+  }
+
+  .highlight.green  { color: #16a34a; }
+  .highlight.orange { color: #d97706; }
+  .highlight.blue   { color: #2563eb; }
+
+  /* ── Section card (with colored label header) ── */
+  .section-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+  }
+
+  .section-card .card-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .section-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+  }
+
+  .section-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ── Blue section header (like "THE HIERARCHY") ── */
+  .block-header {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+  }
+
+  .block-header .block-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 20px;
+  }
+
+  /* ── Two-column layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* ── Three-column layout (pendulum) ── */
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .pendulum-card {
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .pendulum-card .p-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .pendulum-card h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 10px;
+  }
+
+  .pendulum-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  .pendulum-card.left   { background: #fef2f2; }
+  .pendulum-card.center { background: #f0fdf4; }
+  .pendulum-card.right  { background: #fef2f2; }
+
+  /* ── Checklist / X-list ── */
+  .check-list, .x-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .check-list li, .x-list li {
+    font-size: 15px;
+    color: #333;
+    padding: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .check-list li:last-child, .x-list li:last-child {
+    border-bottom: none;
+  }
+
+  .check-list li::before {
+    content: "✓";
+    color: #16a34a;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .x-list li::before {
+    content: "✕";
+    color: #dc2626;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── Hierarchy rows (left + arrow + right) ── */
+  .hierarchy-row {
+    display: grid;
+    grid-template-columns: 1fr 24px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .hierarchy-row .arrow {
+    text-align: center;
+    color: #bbb;
+    font-size: 16px;
+  }
+
+  .h-left, .h-right {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .h-left .h-label, .h-right .h-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .h-left h4, .h-right h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .h-right p {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* ── Action items ── */
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 15px;
+    color: #333;
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+
+  .action-list li .num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563eb;
+    min-width: 20px;
+    padding-top: 2px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TITLE BLOCK -->
+  <div class="title-block">
+    <div class="label">SOP Category — Author Name</div>
+    <h1>SOP Title Goes Here</h1>
+    <div class="subtitle">Project or context · One-line description of what this SOP covers</div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: plain text card -->
+  <div class="section">
+    <div class="section-label">Start Here</div>
+    <div class="card">
+      <span class="highlight green">The key insight or hook goes here.</span> Supporting context that explains why this matters and what problem it solves. Keep this tight — one to three sentences.
+    </div>
+    <div class="card">
+      Additional context card. Use multiple plain cards for sequential information or background the reader needs before the main content.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: hierarchy rows with arrows -->
+  <div class="section">
+    <div class="block-header">
+      <div class="block-title">Section Title — How Each Step Connects</div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label orange">Step 4</div>
+          <h4>Highest Leverage Action</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label orange">Fastest</div>
+          <h4 class="orange">Outcome Name</h4>
+          <p>Brief description of why this step matters most.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label orange">Step 3</div>
+          <h4>Second Priority</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label orange">Fast</div>
+          <h4 class="orange">Outcome Name</h4>
+          <p>Brief description of this step's result.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label purple">Step 2</div>
+          <h4>Supporting Action</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label purple">Medium</div>
+          <h4 class="purple">Outcome Name</h4>
+          <p>Brief description.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label muted">Step 1</div>
+          <h4 class="muted">Foundation</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label muted">Slowest</div>
+          <h4 class="muted">Outcome Name</h4>
+          <p>Brief description.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: three-column pendulum cards -->
+  <div class="section">
+    <div class="card">
+      <div class="block-title blue" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;">The Spectrum — Section Title</div>
+      <p>Intro sentence explaining what this three-way comparison shows and why it matters.</p>
+
+      <div class="three-col">
+        <div class="pendulum-card left">
+          <div class="p-label red">Left</div>
+          <h4>Bad State</h4>
+          <p class="red">Description of what goes wrong here. What this looks like in practice.</p>
+        </div>
+        <div class="pendulum-card center">
+          <div class="p-label green">Center</div>
+          <h4>Ideal State</h4>
+          <p class="green">Description of what correct looks like. The target state.</p>
+        </div>
+        <div class="pendulum-card right">
+          <div class="p-label red">Right</div>
+          <h4>Other Bad State</h4>
+          <p class="red">Description of the opposite failure mode.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: two-column comparison -->
+  <div class="section">
+    <div class="section-label">The Comparison</div>
+    <div class="two-col">
+      <div class="card tinted-green">
+        <div class="card-label green" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Do This</div>
+        <ul class="check-list">
+          <li>First correct behavior</li>
+          <li>Second correct behavior</li>
+          <li>Third correct behavior</li>
+          <li>Fourth correct behavior</li>
+          <li>Fifth correct behavior</li>
+        </ul>
+      </div>
+      <div class="card tinted-red">
+        <div class="card-label red" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Not This</div>
+        <ul class="x-list">
+          <li>First mistake to avoid</li>
+          <li>Second mistake to avoid</li>
+          <li>Third mistake to avoid</li>
+          <li>Fourth mistake to avoid</li>
+          <li>Fifth mistake to avoid</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: action items -->
+  <div class="section">
+    <div class="section-label">What To Do With This</div>
+    <div class="card">
+      <ul class="action-list">
+        <li><span class="num">01</span> First action item — specific, behavioral, no ambiguity.</li>
+        <li><span class="num">02</span> Second action item — what to do, not what to think.</li>
+        <li><span class="num">03</span> Third action item — make it executable.</li>
+        <li><span class="num">04</span> Fourth action item — one action per line.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
