@@ -27,6 +27,7 @@ Live in `projects/`. Each has a README with status and key dates.
 - `projects/marketing-clients/` — Closing 2-3 new retainer clients
 - `projects/stq-infrastructure/` — Branding and channel cleanup
 - `projects/goddard/` — Goddard School Wesley Chapel (marketing client, weekly content + reporting)
+- `projects/maygroup/` — Christy May / MayGroup (marketing client, real estate)
 
 ---
 

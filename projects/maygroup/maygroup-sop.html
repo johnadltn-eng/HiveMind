@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MayGroup — Marketing Funnel SOP</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 60px 20px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .title-block {
+    margin-bottom: 60px;
+  }
+
+  .title-block h1 {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin: 8px 0 12px;
+  }
+
+  .title-block .subtitle {
+    color: #555;
+    font-size: 15px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-green  { background: #0f2d1a; }
+  .card.tinted-red    { background: #2d0f0f; }
+  .card.tinted-blue   { background: #0c1f3d; }
+  .card.tinted-orange { background: #2d1f00; }
+
+  .green  { color: #4ade80; }
+  .red    { color: #f87171; }
+  .blue   { color: #60a5fa; }
+  .orange { color: #fbbf24; }
+  .muted  { color: #777; }
+
+  .highlight { font-weight: 600; }
+  .highlight.green  { color: #4ade80; }
+  .highlight.orange { color: #fbbf24; }
+  .highlight.blue   { color: #60a5fa; }
+
+  .block-header {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+  }
+
+  .block-header .block-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    margin-bottom: 20px;
+  }
+
+  .hierarchy-row {
+    display: grid;
+    grid-template-columns: 1fr 24px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .hierarchy-row .arrow {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+  }
+
+  .h-left, .h-right {
+    background: #222;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .h-left .h-label, .h-right .h-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: #777;
+  }
+
+  .h-left h4, .h-right h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e5e5e5;
+  }
+
+  .h-right p {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .check-list, .x-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .check-list li, .x-list li {
+    font-size: 14px;
+    color: #bbb;
+    padding: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .check-list li:last-child, .x-list li:last-child { border-bottom: none; }
+
+  .check-list li::before {
+    content: "✓";
+    color: #4ade80;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .x-list li::before {
+    content: "✕";
+    color: #f87171;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .role-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 10px;
+  }
+
+  .role-card .role-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e5e5e5;
+    margin-bottom: 4px;
+  }
+
+  .role-card .role-desc {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 15px;
+    color: #bbb;
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+
+  .action-list li .num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #60a5fa;
+    min-width: 20px;
+    padding-top: 2px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="title-block">
+    <div class="label">MayGroup — John Dalton</div>
+    <h1>Marketing Funnel SOP</h1>
+    <div class="subtitle">Manual phase · Facebook & Instagram focus · Reality Tracker lead magnet</div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Where We Are</div>
+    <div class="card">
+      <span class="highlight green">We're proving the funnel by hand before we automate any of it.</span> Facebook and Instagram are the one platform we're building on right now — paid ads through Reminder Media, organic carousels on our own side. Once this closes a real lead, we build the automated version. Not before.
+    </div>
+    <div class="card">
+      YouTube isn't being dropped — Christy keeps posting there at the same low effort as always. It just doesn't get dedicated system-building time until Facebook/Instagram is proven.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="block-header">
+      <div class="block-title">The Funnel — Two Paths In, One System</div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label blue">Paid</div>
+          <h4>Reminder Media runs Meta ads</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label blue">Landing page</div>
+          <h4>Name, phone, email only</h4>
+          <p>No qualifying questions on the page — that happens after opt-in.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label orange">Organic</div>
+          <h4>Carousel posts on our account</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label orange">CTA</div>
+          <h4>"DM the word MayGroup"</h4>
+          <p>Winners get handed to Reminder Media to turn into paid ads.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label muted">Either path</div>
+          <h4 class="muted">Lead lands with Christy</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label muted">Manual for now</div>
+          <h4 class="muted">Christy responds directly</h4>
+          <p>No bot, no auto-sequence yet — real conversation, every time.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Who's Doing What</div>
+    <div class="role-card">
+      <div class="role-name">Reminder Media (Andrew Weeks)</div>
+      <div class="role-desc">Runs the Meta/Facebook paid ads, builds the landing page, sends the ad draft for review before it goes live.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">Joe (virtual assistant)</div>
+      <div class="role-desc">Produces and posts the organic carousel templates on Facebook and Instagram once John locks the design.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">John</div>
+      <div class="role-desc">Builds the carousel template, coordinates between Reminder Media and the organic side so they're not running as two disconnected efforts.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">Christy</div>
+      <div class="role-desc">Handles every DM/lead conversation personally, keeps sending her own Thursday Constant Contact email to her existing list (separate from this system, doesn't compete with it).</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">The Rules Right Now</div>
+    <div class="two-col">
+      <div class="card tinted-green">
+        <div class="highlight green" style="display:block;margin-bottom:16px;">Do This</div>
+        <ul class="check-list">
+          <li>One platform: Facebook + Instagram</li>
+          <li>Landing page stays 3 fields — name, phone, email</li>
+          <li>Test hooks organically first, send winners to paid</li>
+          <li>Christy handles DMs herself, builds real conversations</li>
+          <li>Keep posting to YouTube, just no new investment there</li>
+        </ul>
+      </div>
+      <div class="card tinted-red">
+        <div class="highlight red" style="display:block;margin-bottom:16px;">Not This</div>
+        <ul class="x-list">
+          <li>No LinkedIn, no YouTube ad spend yet</li>
+          <li>No qualifying questions on the landing page</li>
+          <li>No GoHighLevel / bot automation yet</li>
+          <li>No mixing paid and organic messaging without syncing first</li>
+          <li>No abandoning YouTube outright</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">When We Automate</div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">The trigger is one real closed lead</span> — not a date, not a vibe. Once the manual DM funnel proves it converts, we build the automated version (GoHighLevel or a comment-to-DM tool) on top of a message we already know works, instead of guessing.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Open Right Now</div>
+    <div class="card">
+      <ul class="action-list">
+        <li><span class="num">01</span> Christy sends John 3 photos of the most expensive downtown Sarasota condos for the first carousel</li>
+        <li><span class="num">02</span> Get the live landing page URL from Andrew Weeks once the Reality Tracker ad goes live</li>
+        <li><span class="num">03</span> Resolve the YouTube subscriber spike / "YouTube advertising" traffic mystery with Ashley at Best Agent</li>
+        <li><span class="num">04</span> Find the "8 Mistakes to Avoid When Buying a New Construction Home" article on maygroup.com</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
