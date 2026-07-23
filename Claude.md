@@ -23,6 +23,7 @@ Live in `projects/`. Each has a README with status and key dates.
 - `projects/jits-rewrite/` — Fourth rewrite, locking with Chris Greene
 - `projects/drill-heart/` — Outlining before screenplay begins
 - `projects/rep-outreach/` — Manager search via IMDb Pro
+- `projects/auditions/` — Rolling audition scripts, sides, and Actors Access materials
 - `projects/marketing-clients/` — Closing 2-3 new retainer clients
 - `projects/stq-infrastructure/` — Branding and channel cleanup
 - `projects/goddard/` — Goddard School Wesley Chapel (marketing client, weekly content + reporting)

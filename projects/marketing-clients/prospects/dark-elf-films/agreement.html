@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulting Services Agreement — Dark Elf Films</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 60px 20px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .title-block {
+    margin-bottom: 60px;
+  }
+
+  .title-block h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin: 8px 0 12px;
+  }
+
+  .title-block .subtitle {
+    color: #555;
+    font-size: 15px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-green  { background: #0f2d1a; }
+  .card.tinted-red    { background: #2d0f0f; }
+  .card.tinted-blue   { background: #0c1f3d; }
+  .card.tinted-orange { background: #2d1f00; }
+
+  .green  { color: #4ade80; }
+  .red    { color: #f87171; }
+  .blue   { color: #60a5fa; }
+  .orange { color: #fbbf24; }
+  .purple { color: #a78bfa; }
+  .muted  { color: #555; }
+
+  .highlight { font-weight: 600; }
+  .highlight.green  { color: #4ade80; }
+  .highlight.orange { color: #fbbf24; }
+  .highlight.blue   { color: #60a5fa; }
+
+  .block-header {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+  }
+
+  .block-header .block-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    margin-bottom: 20px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .check-list, .x-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .check-list li, .x-list li {
+    font-size: 15px;
+    color: #bbb;
+    padding: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .check-list li:last-child, .x-list li:last-child { border-bottom: none; }
+
+  .check-list li::before {
+    content: "✓";
+    color: #4ade80;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .x-list li::before {
+    content: "✕";
+    color: #f87171;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 15px;
+    color: #bbb;
+    align-items: flex-start;
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+
+  .action-list li .num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #60a5fa;
+    min-width: 20px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .action-list li .session-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e5e5e5;
+    margin-bottom: 4px;
+  }
+
+  .action-list li .session-body p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  .action-list li .session-body .deliverable {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4ade80;
+  }
+
+  .sig-block {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+  }
+
+  .sig-party {
+    margin-bottom: 32px;
+  }
+
+  .sig-party:last-child { margin-bottom: 0; }
+
+  .sig-party-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    margin-bottom: 16px;
+  }
+
+  .sig-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .sig-field {
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .sig-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 8px;
+  }
+
+  .sig-line {
+    border-bottom: 1px solid #333;
+    height: 36px;
+    margin-bottom: 4px;
+  }
+
+  .sig-field .sig-name {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .party-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin: 24px 0;
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .meta-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+
+  .meta-card .meta-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 6px;
+  }
+
+  .meta-card .meta-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e5e5e5;
+  }
+
+  .meta-card .meta-sub {
+    font-size: 13px;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TITLE BLOCK -->
+  <div class="title-block">
+    <div class="label">Consulting Services Agreement</div>
+    <h1>Dark Elf Films</h1>
+    <div class="subtitle">MarketFlow LLC · Killing Kin Launch Strategy</div>
+  </div>
+
+  <!-- PARTIES / META -->
+  <div class="meta-row">
+    <div class="meta-card">
+      <div class="meta-label">Consultant</div>
+      <div class="meta-value">MarketFlow LLC</div>
+      <div class="meta-sub">John Dalton</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Client</div>
+      <div class="meta-value">Dark Elf Films</div>
+      <div class="meta-sub">Jonathan Klotz · Valensky Sylvain</div>
+    </div>
+  </div>
+  <div class="meta-row">
+    <div class="meta-card">
+      <div class="meta-label">Total Fee</div>
+      <div class="meta-value">$950 USD</div>
+      <div class="meta-sub">Due in full before Session 1</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Effective Date</div>
+      <div class="meta-value">[DATE]</div>
+      <div class="meta-sub">Five sessions, completed before launch</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Scope -->
+  <div class="section">
+    <div class="section-label">The Engagement</div>
+    <div class="card">
+      <span class="highlight blue">Five 60-minute live sessions</span> focused on one thing: giving Dark Elf Films a documented, executable plan to launch Killing Kin across platforms — and making sure the person running execution is aligned on that plan before it goes live.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Sessions -->
+  <div class="section">
+    <div class="section-label">Scope of Work — Session by Session</div>
+    <div class="block-header">
+      <div class="block-title">Five Sessions · Structured Deliverables</div>
+      <ul class="action-list">
+        <li>
+          <span class="num">01–02</span>
+          <div class="session-body">
+            <h4>Killing Kin Rollout Plan</h4>
+            <p>Build the full pre-launch rollout: what content goes up, on which platform, and in what sequence ahead of and through launch.</p>
+            <span class="deliverable">Deliverable: written rollout document, ready to execute</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">03–04</span>
+          <div class="session-body">
+            <h4>Platform-Specific Cadence</h4>
+            <p>Define posting cadence and content role for YouTube, TikTok, Instagram, and Facebook.</p>
+            <span class="deliverable">Deliverable: written cadence document, ready to execute</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">05</span>
+          <div class="session-body">
+            <h4>Hannah Alignment</h4>
+            <p>One session directly with Client's social media manager (Hannah) to walk through both documents produced in Sessions 1–4, so execution matches strategy. Day-one alignment only — does not include ongoing review or correction after this session.</p>
+            <span class="deliverable">Deliverable: aligned execution team</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Included / Not Included -->
+  <div class="section">
+    <div class="section-label">Scope Boundaries</div>
+    <div class="two-col">
+      <div class="card tinted-green">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4ade80;margin-bottom:16px;">Included</div>
+        <ul class="check-list">
+          <li>Five 60-minute live sessions (video call)</li>
+          <li>Written rollout plan for Killing Kin</li>
+          <li>Written platform cadence document</li>
+          <li>Hannah alignment session</li>
+          <li>Post-launch check-in call (30 min, complimentary)</li>
+        </ul>
+      </div>
+      <div class="card tinted-red">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f87171;margin-bottom:16px;">Not Included</div>
+        <ul class="x-list">
+          <li>LinkedIn outreach or distribution pitching</li>
+          <li>Ongoing weekly strategy calls</li>
+          <li>Review or correction of Hannah's execution after Session 5</li>
+          <li>Meta monetization roadmap or benchmark tracking</li>
+          <li>Any work on Viva Humanity, Relic, or other titles</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      Any item listed as not included can be scoped and priced as a separate engagement if Client wishes to proceed.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Timeline -->
+  <div class="section">
+    <div class="section-label">Timeline</div>
+    <div class="card">
+      All five sessions will be scheduled and completed <span class="highlight green">on or before the Killing Kin launch date.</span> Session scheduling is coordinated directly between Consultant and Client, or Consultant and Hannah for Session 5.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Fees -->
+  <div class="section">
+    <div class="section-label">Fees & Payment</div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">$950 USD, due in full before the first session.</span> This fee covers all five sessions and the written deliverables produced in Sessions 1–4. It does not cover any work outside the scope defined above.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Post-Launch -->
+  <div class="section">
+    <div class="section-label">Post-Launch Check-In</div>
+    <div class="card tinted-orange">
+      <span class="highlight orange">One complimentary 30-minute call, approximately two weeks after Killing Kin launches.</span> We'll look at early data and discuss whether further engagement makes sense. This call is informational only and does not obligate either party to additional work.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Terms -->
+  <div class="section">
+    <div class="section-label">Terms</div>
+    <div class="card">
+      <ul class="action-list">
+        <li>
+          <span class="num" style="color:#f87171;">—</span>
+          <div class="session-body">
+            <h4>No Guarantee of Outcome</h4>
+            <p>Consultant will deliver the sessions and documents in good faith and on schedule. No guarantee is made regarding audience growth, platform pickup, distribution outcomes, or any other business result. This is a fixed-scope, fixed-fee engagement for the deliverables listed above.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num" style="color:#f87171;">—</span>
+          <div class="session-body">
+            <h4>Independent Contractor</h4>
+            <p>Consultant performs services as an independent contractor — not an employee, partner, or joint venturer of Client.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Signatures -->
+  <div class="section">
+    <div class="section-label">Signatures</div>
+    <div class="sig-block">
+
+      <div class="sig-party">
+        <div class="sig-party-label">Consultant — MarketFlow LLC</div>
+        <div class="sig-row">
+          <div class="sig-field">
+            <label>Signature</label>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <label>Name</label>
+            <div class="sig-line"></div>
+            <div class="sig-name">John Dalton</div>
+          </div>
+          <div class="sig-field">
+            <label>Date</label>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="party-divider">
+
+      <div class="sig-party">
+        <div class="sig-party-label">Client — Dark Elf Films · Jonathan Klotz</div>
+        <div class="sig-row">
+          <div class="sig-field">
+            <label>Signature</label>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <label>Name</label>
+            <div class="sig-line"></div>
+            <div class="sig-name">Jonathan Klotz</div>
+          </div>
+          <div class="sig-field">
+            <label>Date</label>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="party-divider">
+
+      <div class="sig-party">
+        <div class="sig-party-label">Client — Dark Elf Films · Valensky Sylvain</div>
+        <div class="sig-row">
+          <div class="sig-field">
+            <label>Signature</label>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <label>Name</label>
+            <div class="sig-line"></div>
+            <div class="sig-name">Valensky Sylvain</div>
+          </div>
+          <div class="sig-field">
+            <label>Date</label>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

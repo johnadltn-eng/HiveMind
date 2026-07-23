@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goddard School Wesley Chapel — Instagram Marketing SOP</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 60px 20px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .title-block {
+    margin-bottom: 60px;
+  }
+
+  .title-block h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin: 8px 0 12px;
+  }
+
+  .title-block .subtitle {
+    color: #555;
+    font-size: 15px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-green  { background: #0f2d1a; }
+  .card.tinted-red    { background: #2d0f0f; }
+  .card.tinted-blue   { background: #0c1f3d; }
+  .card.tinted-orange { background: #2d1f00; }
+
+  .green  { color: #4ade80; }
+  .red    { color: #f87171; }
+  .blue   { color: #60a5fa; }
+  .orange { color: #fbbf24; }
+  .purple { color: #a78bfa; }
+  .muted  { color: #555; }
+
+  .highlight { font-weight: 600; }
+  .highlight.green  { color: #4ade80; }
+  .highlight.orange { color: #fbbf24; }
+  .highlight.blue   { color: #60a5fa; }
+
+  .block-header {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 12px;
+  }
+
+  .block-header .block-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    margin-bottom: 20px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .check-list, .x-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .check-list li, .x-list li {
+    font-size: 15px;
+    color: #bbb;
+    padding: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .check-list li:last-child, .x-list li:last-child { border-bottom: none; }
+
+  .check-list li::before {
+    content: "✓";
+    color: #4ade80;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .x-list li::before {
+    content: "✕";
+    color: #f87171;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .hierarchy-row {
+    display: grid;
+    grid-template-columns: 1fr 24px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .hierarchy-row .arrow {
+    text-align: center;
+    color: #bbb;
+    font-size: 16px;
+  }
+
+  .h-left, .h-right {
+    background: #222;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .h-left .h-label, .h-right .h-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .h-left h4, .h-right h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #e5e5e5;
+  }
+
+  .h-right p {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 15px;
+    color: #bbb;
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+
+  .action-list li .num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #60a5fa;
+    min-width: 20px;
+    padding-top: 2px;
+  }
+
+  .cadence-row {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: flex-start;
+  }
+
+  .cadence-row:last-child { border-bottom: none; }
+
+  .cadence-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    min-width: 70px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .cadence-tag.daily   { background: #0f2d1a; color: #4ade80; }
+  .cadence-tag.weekly  { background: #0c1f3d; color: #60a5fa; }
+  .cadence-tag.monthly { background: #2d1f00; color: #fbbf24; }
+
+  .cadence-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e5e5e5;
+    margin-bottom: 4px;
+  }
+
+  .cadence-body p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TITLE BLOCK -->
+  <div class="title-block">
+    <div class="label">MarketFlow Strategies X Skyway Business Consulting</div>
+    <h1>Instagram Marketing</h1>
+    <div class="subtitle">Goddard School Wesley Chapel · Social content strategy, cadence, and workflow</div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: The Goal -->
+  <div class="section">
+    <div class="section-label">The Goal</div>
+    <div class="card">
+      <span class="highlight green">Instagram is your front door for local parents.</span> The strategy is simple: show up consistently in Wesley Chapel parents' feeds so that when they're ready to choose a school, Goddard is already familiar and trusted.
+    </div>
+    <div class="card">
+      Every piece of content we create is designed to reach parents of children ages 0–6 in the Wesley Chapel area — before they're even actively searching. Organic reach now builds the enrollment pipeline later.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Content Types -->
+  <div class="section">
+    <div class="block-header">
+      <div class="block-title">Content Types — What We Post and Why</div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label green">Type 1</div>
+          <h4>Local News Carousels</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label green">Daily Reach</div>
+          <h4 class="green">Community Authority</h4>
+          <p>Curated Wesley Chapel news and local content relevant to parents. Builds organic reach with the exact audience we want — local families.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label blue">Type 2</div>
+          <h4>School Reels</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label blue">Trust</div>
+          <h4 class="blue">Show the School</h4>
+          <p>On-site footage that shows real life at Goddard Wesley Chapel. Answers the parent's core question: what does it actually look like there?</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label orange">Type 3</div>
+          <h4>Collab Posts</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label orange">Audience Growth</div>
+          <h4 class="orange">Cross-Reach</h4>
+          <p>Partner content with local businesses (Happy Feet, Topspin Tampa, etc.) that share our target audience. Expands reach without paid spend.</p>
+        </div>
+      </div>
+
+      <div class="hierarchy-row">
+        <div class="h-left">
+          <div class="h-label" style="color:#aaa;">Type 4</div>
+          <h4 class="muted">High-Performing Reposts</h4>
+        </div>
+        <div class="arrow">→</div>
+        <div class="h-right">
+          <div class="h-label" style="color:#aaa;">Consistency</div>
+          <h4 class="muted">Proven Content</h4>
+          <p>Replicating top-performing posts from other Goddard school accounts. We use what's already working across the franchise network.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Cadence -->
+  <div class="section">
+    <div class="section-label">The Cadence</div>
+    <div class="card">
+
+      <div class="cadence-row">
+        <div class="cadence-tag daily">Daily</div>
+        <div class="cadence-body">
+          <h4>Local News Carousel</h4>
+          <p>One Wesley Chapel carousel post per day. Curated local content — events, spots for kids, community news relevant to parents of young children. No negative stories, no generic content.</p>
+        </div>
+      </div>
+
+      <div class="cadence-row">
+        <div class="cadence-tag weekly">Weekly</div>
+        <div class="cadence-body">
+          <h4>Strategy Call + Report</h4>
+          <p>Weekly call with Ohm to review performance, align on upcoming content, and document decisions. A written summary goes to the directors after every call.</p>
+        </div>
+      </div>
+
+      <div class="cadence-row">
+        <div class="cadence-tag monthly">Monthly</div>
+        <div class="cadence-body">
+          <h4>On-Site Shoot</h4>
+          <p>One on-site visit to batch 3–4 reels of real school footage. This gives us a month of school content from a single shoot — efficient and consistent.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Do This / Not This -->
+  <div class="section">
+    <div class="section-label">Content Rules</div>
+    <div class="two-col">
+      <div class="card tinted-green">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4ade80;margin-bottom:16px;">We Post This</div>
+        <ul class="check-list">
+          <li>Local Wesley Chapel events and activities</li>
+          <li>Content relevant to parents of kids ages 0–6</li>
+          <li>Real footage from inside the school</li>
+          <li>Collabs with trusted local businesses</li>
+          <li>Proven posts from high-performing Goddard accounts</li>
+          <li>Positive, community-forward stories</li>
+        </ul>
+      </div>
+      <div class="card tinted-red">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f87171;margin-bottom:16px;">We Avoid This</div>
+        <ul class="x-list">
+          <li>Generic parenting content with no local angle</li>
+          <li>Negative news stories or safety concerns</li>
+          <li>Hard sales posts or enrollment pressure</li>
+          <li>Content that doesn't reflect the Wesley Chapel community</li>
+          <li>Posts without a clear parent audience in mind</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: Approval and Revision -->
+  <div class="section">
+    <div class="section-label">Approval Process</div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">One revision per video, then it posts.</span> This keeps the content moving and avoids back-and-forth that stalls momentum. Carousels are reviewed before going live. Reels get one round of feedback — if there are changes, they get made once, then the post goes out.
+    </div>
+    <div class="card">
+      If the school has footage to share (events, classroom moments, holiday content), upload it to the shared Google Drive folder. We'll edit, add the Goddard logo, and schedule it. No need to coordinate — just drop it in the folder.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: What You'll Receive -->
+  <div class="section">
+    <div class="section-label">What You Get</div>
+    <div class="card">
+      <ul class="action-list">
+        <li><span class="num">01</span> <strong style="color:#e5e5e5;">Daily carousel posts</strong> — Wesley Chapel local content ready for Instagram, formatted and copy-ready.</li>
+        <li><span class="num">02</span> <strong style="color:#e5e5e5;">Monthly school reels</strong> — Edited video content from on-site shoots, branded with the Goddard logo.</li>
+        <li><span class="num">03</span> <strong style="color:#e5e5e5;">Weekly written summary</strong> — What went out, what performed, what's coming next. Sent to D, Roshanda, and Dinesh after each strategy call.</li>
+        <li><span class="num">04</span> <strong style="color:#e5e5e5;">Collab coordination</strong> — Outreach and execution for partner posts with relevant local businesses.</li>
+        <li><span class="num">05</span> <strong style="color:#e5e5e5;">Performance tracking</strong> — Monthly recap of reach, engagement, and follower growth so you can see what's working.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION: One Ask -->
+  <div class="section">
+    <div class="section-label">One Ask From the School</div>
+    <div class="card">
+      <span class="highlight orange">Add "How did you hear about us?" to your intake process</span> if it isn't there already. This is how we close the loop between Instagram activity and actual enrollment inquiries. Without it, we're flying blind on what's driving new families to the door.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
