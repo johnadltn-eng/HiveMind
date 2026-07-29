@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Killing Kin — Launch Rollout Plan</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 70px 20px 110px;
+  }
+
+  .page { max-width: 740px; margin: 0 auto; }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 22px;
+  }
+
+  .title-block { margin-bottom: 48px; }
+
+  .title-block h1 {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.08;
+    color: #fff;
+    margin: 8px 0 14px;
+    text-wrap: balance;
+  }
+
+  .title-block .subtitle { color: #888; font-size: 16px; max-width: 540px; line-height: 1.6; }
+
+  .section { margin-bottom: 44px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .section-sub { font-size: 14px; color: #777; margin-bottom: 22px; line-height: 1.6; max-width: 560px; }
+
+  .card {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-orange { background: #241a08; border-color: rgba(251,191,36,0.12); }
+  .card.tinted-blue   { background: #0c1a2d; border-color: rgba(96,165,250,0.12); }
+  .card.tinted-green  { background: #0f2015; border-color: rgba(74,222,128,0.12); }
+
+  .green  { color: #4ade80; }
+  .orange { color: #fbbf24; }
+  .blue   { color: #60a5fa; }
+  .muted  { color: #777; }
+
+  .highlight { font-weight: 600; }
+  .highlight.green  { color: #4ade80; }
+  .highlight.orange { color: #fbbf24; }
+  .highlight.blue   { color: #60a5fa; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #777; padding: 0 0 12px;
+  }
+  td { padding: 11px 12px 11px 0; color: #bbb; border-top: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  td.mono { color: #999; font-variant-numeric: tabular-nums; }
+
+  .role-card {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 20px 26px;
+    margin-bottom: 10px;
+  }
+  .role-card .role-name {
+    font-size: 15px; font-weight: 700; color: #e5e5e5; margin-bottom: 5px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .role-card .role-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 11px; border-radius: 20px;
+  }
+  .role-tag.north-star { background: #14301f; color: #4ade80; }
+  .role-tag.commit { background: #10233d; color: #60a5fa; }
+  .role-tag.minimal { background: #222; color: #888; }
+  .role-card .role-desc { font-size: 13.5px; color: #888; line-height: 1.55; }
+
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 44px 0; }
+
+  /* --- Whisper / Tease / Shout intensity chart --- */
+  .wts-chart {
+    background: #131313;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 32px 28px 20px;
+    margin-bottom: 14px;
+  }
+  .wts-bars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: end;
+    gap: 14px;
+    height: 190px;
+    margin-bottom: 4px;
+  }
+  .wts-bar-wrap { display: flex; flex-direction: column; align-items: stretch; height: 100%; justify-content: flex-end; }
+  .wts-bar {
+    width: 100%;
+    border-radius: 8px 8px 3px 3px;
+    position: relative;
+    min-height: 18px;
+  }
+  .wts-bar .wts-val {
+    position: absolute;
+    top: -22px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .wts-labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .wts-labels div { text-align: center; }
+  .wts-labels .wname { font-size: 13px; font-weight: 700; color: #e5e5e5; margin-bottom: 3px; }
+  .wts-labels .wtime { font-size: 10.5px; color: #666; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .phase-detail {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.65;
+  }
+  .phase-detail .pd-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .phase-detail.p-whisper { border-color: #a67c3d; }
+  .phase-detail.p-whisper .pd-title { color: #d4a866; }
+  .phase-detail.p-tease { border-color: #d99a2b; }
+  .phase-detail.p-tease .pd-title { color: #f0b344; }
+  .phase-detail.p-shout { border-color: #fb923c; }
+  .phase-detail.p-shout .pd-title { color: #fdba74; }
+  .phase-detail.p-launch { border-color: #f87171; }
+  .phase-detail.p-launch .pd-title { color: #fca5a5; }
+  .phase-detail.p-sustain { border-color: #4ade80; }
+  .phase-detail.p-sustain .pd-title { color: #86efac; }
+
+  .action-list { list-style: none; padding: 0; }
+  .action-list li {
+    display: flex; gap: 14px; padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; color: #bbb;
+  }
+  .action-list li:last-child { border-bottom: none; }
+  .action-list li .num { font-size: 12px; font-weight: 700; color: #60a5fa; min-width: 20px; padding-top: 2px; }
+
+  .x-list { list-style: none; padding: 0; }
+  .x-list li {
+    font-size: 13.5px; color: #999; padding: 7px 0; display: flex; align-items: flex-start; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .x-list li:last-child { border-bottom: none; }
+  .x-list li::before { content: "—"; color: #555; flex-shrink: 0; }
+
+  .footnote { font-size: 12px; color: #555; text-align: center; margin-top: 50px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="title-block">
+    <div class="label">Dark Elf Films — Killing Kin</div>
+    <h1>Launch Rollout Plan</h1>
+    <div class="subtitle">What goes up, on which platform, and how the intensity builds — from first reactivation through launch day and the week after.</div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">What's Already Working</div>
+    <div class="section-sub">The trailer and announcement are already live and already performing — the opportunity is centralizing and re-promoting what's proven, not starting from zero.</div>
+    <table>
+      <tr><th>Asset</th><th>Platform</th><th>Engagement</th></tr>
+      <tr><td>Official teaser trailer</td><td class="mono">YouTube</td><td class="mono">175 views</td></tr>
+      <tr><td>Poster / announcement post</td><td class="mono">Instagram</td><td class="mono">174 likes</td></tr>
+      <tr><td>Title card / teaser</td><td class="mono">TikTok</td><td class="mono">130 views</td></tr>
+      <tr><td>General BTS library</td><td class="mono">IG / YT / TikTok</td><td>The proven-performing content type across every platform</td></tr>
+    </table>
+    <div class="card tinted-orange" style="margin-top:14px;">
+      <span class="highlight orange">The pattern is consistent across three separate platforms:</span> deliberately imperfect, behind-the-scenes, personality-driven content is outperforming polished, trailer-style posts — on Instagram, on YouTube, and at smaller scale on TikTok. That's not a hunch, it's independently confirmed three times. This rollout leans into it everywhere.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Platform Focus</div>
+    <div class="role-card">
+      <div class="role-name">Instagram <span class="role-tag north-star">North Star</span></div>
+      <div class="role-desc">Reels pulling well beyond follower count — the proven hook/BTS pattern lives here first.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">YouTube <span class="role-tag commit">Full Commit</span></div>
+      <div class="role-desc">Same pattern, independently confirmed — behind-the-scenes content already outperforming the official trailer.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">Facebook <span class="role-tag minimal">Auto-Post</span></div>
+      <div class="role-desc">Mirrors Instagram automatically — no dedicated content strategy needed here yet.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">TikTok <span class="role-tag minimal">Cross-Post</span></div>
+      <div class="role-desc">Repurpose Instagram/YouTube winners — the same relative pattern holds, even at smaller scale.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Content Selection — The Golden Wheel Method</div>
+    <div class="section-sub">Before anything gets posted, here's the actual filter for choosing what to make — not just what to talk about.</div>
+    <div class="card">
+      Take a wheel that already works, and make it a <span class="highlight">golden</span> wheel — stronger, faster, better. Applied to content: find a clip or format that's already proven to work, then make a version that's measurably better along specific, identifiable dimensions. Not a repost. A remake that outperforms the original.
+    </div>
+
+    <div class="section-sub" style="margin-top:26px; margin-bottom:10px;">What makes a strong candidate</div>
+    <div class="card">
+      <ul class="x-list">
+        <li>Small account, big outlier — a video doing far more than that account normally does is the real signal, not raw view count</li>
+        <li>The more recent, the better — something posted in the last week or two beats an older viral hit</li>
+        <li>Search by hashtag — the same tags the original used surface more candidates in the same lane</li>
+        <li>Flawed but proven beats polished but unproven — rough edges in the original don't disqualify it, that gap is the opportunity</li>
+      </ul>
+    </div>
+
+    <div class="section-sub" style="margin-top:26px; margin-bottom:10px;">What "better" actually means</div>
+    <div class="card">
+      <ul class="action-list">
+        <li><span class="num">01</span> Punchier hook — built to pull comments and shares, not just views</li>
+        <li><span class="num">02</span> Sharper visuals — better color, cleaner framing, higher-res source footage</li>
+        <li><span class="num">03</span> Balanced audio — keep it if it's already working, just pull the volume down so it's not jarring</li>
+        <li><span class="num">04</span> Tighter cut — if the same beat lands faster, cut it down</li>
+        <li><span class="num">05</span> Captions that match the content's identity — animated, styled to fit</li>
+        <li><span class="num">06</span> Metadata that pulls its weight — file name, caption, pinned comment, description all feeding the algorithm the same way they feed a viewer</li>
+      </ul>
+    </div>
+
+    <div class="card tinted-orange" style="margin-top:14px;">
+      <span class="highlight orange">This isn't a one-off trick.</span> Doing it consistently for 30-60-90 days is what makes it reliably outperform. Carousels are a separate lane — not covered by this method.
+    </div>
+    <div style="font-size:12.5px; color:#666; margin-top:2px;">Reference video: <a href="https://www.youtube.com/watch?v=Kf-CvfoDnnw" class="blue" target="_blank" rel="noopener">youtube.com/watch?v=Kf-CvfoDnnw</a></div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Finding It — Where the Winning Content Actually Lives</div>
+    <div class="section-sub">The Golden Wheel Method only works if you're scouting the right accounts and formats in the first place. The sourcing process is the same no matter what the niche is — fitness, a local preschool, or a horror feature. What changes is where you point it.</div>
+    <div class="card">
+      Same tactic, two completely different niches, same result: scouting by hashtag and format for small-account outliers works whether the subject is a fitness page or a local preschool's Instagram. The niche doesn't change the mechanism — it just changes where you're looking. For Killing Kin, that means pointing the same process at accounts running <span class="highlight">vertical series and BTS content</span> — the exact lane already proven to outperform here.
+    </div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">One account worth checking directly: Blake Ridder.</span> His content sits in the same lane — vertical series, BTS — and is a strong structural reference. The move is to study his format beat for beat, then execute a version that's measurably better using the same levers from the Golden Wheel section above — sharper hook, cleaner cut, better captions. Not a copy. A better version of the same beat.
+    </div>
+    <div style="font-size:12.5px; color:#666; margin-top:2px;">Reference video: <a href="https://www.youtube.com/watch?v=4b612zSFbnw" class="blue" target="_blank" rel="noopener">youtube.com/watch?v=4b612zSFbnw</a></div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">The Whisper, Tease, Shout Method</div>
+    <div class="section-sub">The rollout isn't one push on launch day — it's a deliberate build in volume and specificity, so that by the time Killing Kin actually drops, the audience already feels like they're part of something happening, not being told about something that already happened.</div>
+
+    <div class="wts-chart">
+      <div class="wts-bars">
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:26%; background: linear-gradient(180deg, #c9a468, #a67c3d);">
+            <div class="wts-val" style="color:#d4a866;">Quiet</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:46%; background: linear-gradient(180deg, #f0b344, #d99a2b);">
+            <div class="wts-val" style="color:#f0b344;">Building</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:76%; background: linear-gradient(180deg, #fdba74, #fb923c);">
+            <div class="wts-val" style="color:#fdba74;">Loud</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:100%; background: linear-gradient(180deg, #fca5a5, #f87171);">
+            <div class="wts-val" style="color:#fca5a5;">Peak</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:52%; background: linear-gradient(180deg, #86efac, #4ade80);">
+            <div class="wts-val" style="color:#86efac;">Steady</div>
+          </div>
+        </div>
+      </div>
+      <div class="wts-labels">
+        <div><div class="wname">Whisper</div><div class="wtime">T-minus 3wk</div></div>
+        <div><div class="wname">Tease</div><div class="wtime">T-minus 2wk</div></div>
+        <div><div class="wname">Shout</div><div class="wtime">T-minus 1wk</div></div>
+        <div><div class="wname">Launch</div><div class="wtime">Release day</div></div>
+        <div><div class="wname">Sustain</div><div class="wtime">Week after</div></div>
+      </div>
+    </div>
+
+    <div class="phase-detail p-whisper">
+      <div class="pd-title">Whisper — reactivate, no hard sell</div>
+      Steady, low-key posting resumes on Instagram and YouTube — the BTS/candid content already proven to work. No Killing Kin push yet, just consistent presence. The goal here is momentum, not announcement.
+    </div>
+    <div class="phase-detail p-tease">
+      <div class="pd-title">Tease — Killing Kin enters the feed</div>
+      Hook-forward posts, cast candids, behind-the-scenes from the shoot. The existing teaser and poster get a second life — re-surfaced, re-cut, re-promoted. Specificity rises: this is real, it's coming, here's a taste.
+    </div>
+    <div class="phase-detail p-shout">
+      <div class="pd-title">Shout — daily, cross-platform, countdown</div>
+      Frequency increases across every platform. A fixed countdown begins — 48 hours out, 24 hours out, 12 hours out — each post raising the specificity. Every post keeps pointing to the same place: the consolidated bio link and captions all drive to YouTube, no new destination introduced this late.
+    </div>
+    <div class="phase-detail p-launch">
+      <div class="pd-title">Launch — the release sequence</div>
+      Instagram first, YouTube mirrored with an optimized title and description, Facebook auto-posting, TikTok reposting the release content natively. Full attention window, comments answered in real time.
+    </div>
+    <div class="phase-detail p-sustain">
+      <div class="pd-title">Sustain — hold the cadence, don't vanish</div>
+      Posting settles to a steady, still-elevated rhythm. Comments keep getting answered while interest is highest. This is also where the data shows what actually landed — informing what comes next.
+    </div>
+
+    <div class="section-sub" style="margin-top:26px; margin-bottom:10px;">CTA By Phase — What Every Post Actually Says</div>
+    <div class="card">
+      <table>
+        <tr><th>Phase</th><th>CTA Intensity</th><th>What the post says</th></tr>
+        <tr><td>Whisper</td><td class="mono">None</td><td>No CTA, no mention of Killing Kin. Just consistent presence — the goal is momentum, not a push.</td></tr>
+        <tr><td>Tease</td><td class="mono">Soft</td><td>Curiosity, not instruction. Caption implies something's coming — no explicit "watch" language yet. Link in bio is there if someone looks, not pushed in the caption.</td></tr>
+        <tr><td>Shout</td><td class="mono">Direct</td><td>Every post closes with an explicit CTA — "Watch the trailer now — link in bio." Countdown copy stacks on top of it (48 hrs, 24 hrs, 12 hrs).</td></tr>
+        <tr><td>Launch</td><td class="mono">Hardest push</td><td>"Killing Kin — Episode 1 is out now. Watch on YouTube — link in bio." Same line, every platform, same day.</td></tr>
+        <tr><td>Sustain</td><td class="mono">Steady</td><td>"[X] episodes of Killing Kin are streaming now — catch up on YouTube." Updates as more episodes go live.</td></tr>
+      </table>
+    </div>
+    <div class="card tinted-orange" style="margin-top:12px;">
+      <span class="highlight orange">The standing rule past week one:</span> every Golden Wheel / BTS reel — whisper, tease, or evergreen — closes with one line pointing back to the series: "[X] episodes of Killing Kin are up now — link in bio." One launch spike doesn't get to 10K views across all 5 episodes on its own. BTS content has to stay an always-on funnel back to the series long after Shout and Launch are over.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Launch Day — Release Sequence</div>
+    <div class="card">
+      <ul class="action-list">
+        <li><span class="num">01</span> Instagram — primary release post/reel, hook-forward</li>
+        <li><span class="num">02</span> YouTube — mirrored release, optimized title and description</li>
+        <li><span class="num">03</span> Facebook — auto-post from Instagram</li>
+        <li><span class="num">04</span> TikTok — native repost of the release content</li>
+      </ul>
+    </div>
+
+    <div class="section-sub" style="margin-top:22px; margin-bottom:10px;">Cast & Crew Outreach</div>
+    <div class="card tinted-green">
+      <span class="highlight green">Hannah reaches out personally.</span> Same organic play that already worked getting cast behind the Instagram carousel — applied to launch day, pointed at the YouTube link this time. A direct, personal message to everyone who was part of the project:
+      <br><br>
+      <em>"Killing Kin is finally ready — feel free to send this on your Instagram story and leave a review!"</em>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">YouTube Strategy — Getting Found In Search</div>
+    <div class="section-sub">None of the reach matters if the platform's own search doesn't surface it. This is the difference between a video that only reaches people already following the account and one that shows up when a stranger searches for exactly this kind of content.</div>
+
+    <div class="section-sub" style="margin-top:22px; margin-bottom:10px;">Title & Hashtags</div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">"Vertical Series" goes directly in the title</span> on every Shorts/Reels upload — the exact phrase people search, not a category buried in the description.
+    </div>
+    <div class="card">
+      Hashtags stay consistent on every upload: <span class="highlight">#verticalseries #BTS #film</span> — same three, every time, so the platform's own indexing has a clean, repeated signal to key off of.
+    </div>
+
+    <div class="section-sub" style="margin-top:22px; margin-bottom:10px;">Video Tags — Branded + What People Actually Search</div>
+    <div class="card tinted-blue">
+      Tags are where the real competitive play happens. Not just descriptive tags (Killing Kin, Dark Elf Films) — mixed in with the terms someone types when they don't know the title yet: <span class="highlight blue">"best vertical series," "best vertical series out right now."</span> Branded and generic search terms go in side by side, so the video can rank on its own name and on the category someone's actually browsing.
+    </div>
+
+    <div class="section-sub" style="margin-top:22px; margin-bottom:10px;">Structure — All 5 Episodes, One Destination</div>
+    <div class="card tinted-green">
+      <span class="highlight green">All 5 episodes post back-to-back</span>, each one tagged the same way — no gaps between drops. Grouped into a single playlist immediately, not stitched together after the fact, so YouTube's own recommendation engine can chain episode-to-episode inside one watch session. Playlist featured at the top of the channel page — same "first thing a visitor sees" principle as the featured-video swap below.
+    </div>
+    <div class="card tinted-orange" style="margin-top:12px;">
+      <span class="highlight orange">None of this is locked in on upload.</span> Title, tags, and description can all be edited after the fact without re-uploading. If the first round of tags and search terms isn't ranking, give it about 4 weeks, then go back into the video settings and tweak the combination — keep adjusting until it lands.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Two Fast Wins, Before Anything Else</div>
+    <div class="section-sub">One clear destination, everywhere — that's the actual highest-leverage move here. Not the website: the website stays a landing page for investors and legitimacy, not a traffic destination. Every call-to-action points to YouTube instead.</div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">Fix and simplify the Instagram bio link.</span> There are 3 links right now, and one — the Killing Kin teaser — is broken. Consolidate to one link, pointing straight to YouTube, for the launch window. Less is more: one clear place to go beats three options, even a tidy link-tree.
+    </div>
+    <div class="card tinted-green">
+      <span class="highlight green">Swap the YouTube featured video, sharpen the thumbnail.</span> Killing Kin should be the first thing a new visitor sees — not older content. The current thumbnail doesn't create a question; it should make someone wonder "what's happening here?" before they even click.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">If Bandwidth Gets Tight — Priority Order</div>
+    <div class="section-sub">This plan works best executed in full, but it's a lot to hold precisely. If something has to give, here's the order it should give in.</div>
+    <div class="card tinted-green">
+      <span class="highlight green">Non-negotiable, no matter what:</span> fix the Instagram bio link to one destination, keep the BTS/Golden Wheel content posting on its normal cadence, and swap the YouTube featured video and thumbnail. All three are one-time setup fixes, not ongoing discipline — cheapest to do, already proven to work, and everything else in this plan sits on top of them.
+    </div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">Do next:</span> Hannah's personal outreach to cast and crew, and sourcing/remaking a few Blake Ridder-style Golden Wheel pieces. Both are proven levers — Keith Smith's own network already drove real engagement on the poster post — but they take direct effort: outreach is a single push, remakes take real production time per piece.
+    </div>
+    <div class="card tinted-orange">
+      <span class="highlight orange">First to cut if time runs out:</span> the CTA-by-phase copy discipline and the YouTube tag/keyword rotation. Both matter, but they only work if applied consistently across every single post, with no correction after the Hannah alignment session. Half the posts done right and half done wrong is worse than a simpler, consistent version of either.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Capture — Confirmed Not This Round</div>
+    <div class="section-sub">This launch is traffic-only, by design — get viewership up first, build the pitch-ready proof, worry about capturing an audience once there's real volume to capture.</div>
+    <div class="card">
+      Once traffic grows past where it sits today, the same idea used for the Whisper → Tease → Shout build applies to a future capture flow too: don't make the signup the reward, make it the bridge — the next release is what actually closes the loop. Worth building for launch two or three, not this one.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Not Covered In This Phase</div>
+    <div class="card">
+      <ul class="x-list">
+        <li>Platform/distribution outreach (LinkedIn, direct pitching)</li>
+        <li>Ongoing weekly strategy calls</li>
+        <li>Meta monetization tracking</li>
+        <li>Other titles (Viva Humanity, Relic)</li>
+        <li>Paid-access / gated-release funnel — confirmed traffic-only for this launch, no gating</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footnote">Killing Kin — Rollout Plan · Dark Elf Films × MarketFlow LLC</div>
+
+</div>
+</body>
+</html>
