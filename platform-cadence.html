@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Killing Kin — Platform Cadence</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 70px 20px 110px;
+  }
+
+  .page { max-width: 740px; margin: 0 auto; }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 22px;
+  }
+
+  .title-block { margin-bottom: 48px; }
+
+  .title-block h1 {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.08;
+    color: #fff;
+    margin: 8px 0 14px;
+    text-wrap: balance;
+  }
+
+  .title-block .subtitle { color: #888; font-size: 16px; max-width: 540px; line-height: 1.6; }
+
+  .section { margin-bottom: 44px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .section-sub { font-size: 14px; color: #777; margin-bottom: 22px; line-height: 1.6; max-width: 560px; }
+
+  .card {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-orange { background: #241a08; border-color: rgba(251,191,36,0.12); }
+  .card.tinted-blue   { background: #0c1a2d; border-color: rgba(96,165,250,0.12); }
+  .card.tinted-green  { background: #0f2015; border-color: rgba(74,222,128,0.12); }
+
+  .green  { color: #4ade80; }
+  .orange { color: #fbbf24; }
+  .blue   { color: #60a5fa; }
+  .muted  { color: #777; }
+
+  .highlight { font-weight: 600; }
+  .highlight.green  { color: #4ade80; }
+  .highlight.orange { color: #fbbf24; }
+  .highlight.blue   { color: #60a5fa; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #777; padding: 0 0 12px;
+  }
+  td { padding: 12px 14px 12px 0; color: #bbb; border-top: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  td.mono { color: #999; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.plat { color: #e5e5e5; font-weight: 700; }
+
+  /* platform breakdown */
+  .plat-block {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin-bottom: 16px;
+  }
+  .plat-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px;
+  }
+  .plat-head h3 { font-size: 20px; font-weight: 800; color: #fff; }
+  .role-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 11px; border-radius: 20px;
+  }
+  .role-tag.north-star { background: #14301f; color: #4ade80; }
+  .role-tag.commit { background: #10233d; color: #60a5fa; }
+  .role-tag.minimal { background: #222; color: #888; }
+
+  .whw { display: flex; flex-direction: column; gap: 16px; }
+  .whw-row { display: grid; grid-template-columns: 68px 1fr; gap: 16px; }
+  .whw-tag {
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    padding-top: 2px;
+  }
+  .whw-tag.what { color: #60a5fa; }
+  .whw-tag.how  { color: #fbbf24; }
+  .whw-tag.why  { color: #4ade80; }
+  .whw-body { font-size: 14px; color: #bbb; line-height: 1.65; }
+  .whw-body .figure { color: #e5e5e5; font-weight: 600; }
+
+  .role-card {
+    background: #161616; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;
+    padding: 20px 26px; margin-bottom: 10px;
+  }
+
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 44px 0; }
+
+  .x-list { list-style: none; padding: 0; }
+  .x-list li {
+    font-size: 13.5px; color: #999; padding: 7px 0; display: flex; align-items: flex-start; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .x-list li:last-child { border-bottom: none; }
+  .x-list li::before { content: "—"; color: #555; flex-shrink: 0; }
+
+  /* countdown / launch arc chart */
+  .cd-chart {
+    background: #131313;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 32px 24px 20px;
+    margin-bottom: 14px;
+  }
+  .cd-bars {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: end;
+    gap: 10px;
+    height: 190px;
+    margin-bottom: 4px;
+  }
+  .cd-bar-wrap { display: flex; flex-direction: column; align-items: stretch; height: 100%; justify-content: flex-end; }
+  .cd-bar {
+    width: 100%;
+    border-radius: 8px 8px 3px 3px;
+    position: relative;
+    min-height: 18px;
+  }
+  .cd-bar .cd-val {
+    position: absolute;
+    top: -22px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .cd-labels {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .cd-labels div { text-align: center; }
+  .cd-labels .cname { font-size: 12px; font-weight: 700; color: #e5e5e5; margin-bottom: 3px; }
+  .cd-labels .ctime { font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .phase-detail {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.65;
+  }
+  .phase-detail .pd-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .phase-detail.p-t48 { border-color: #a67c3d; }
+  .phase-detail.p-t48 .pd-title { color: #d4a866; }
+  .phase-detail.p-t24 { border-color: #d99a2b; }
+  .phase-detail.p-t24 .pd-title { color: #f0b344; }
+  .phase-detail.p-t12 { border-color: #fb923c; }
+  .phase-detail.p-t12 .pd-title { color: #fdba74; }
+  .phase-detail.p-launchhour { border-color: #f87171; }
+  .phase-detail.p-launchhour .pd-title { color: #fca5a5; }
+  .phase-detail.p-sustain { border-color: #4ade80; }
+  .phase-detail.p-sustain .pd-title { color: #86efac; }
+  .phase-detail.p-steady { border-color: #60a5fa; }
+  .phase-detail.p-steady .pd-title { color: #93c5fd; }
+
+  .footnote { font-size: 12px; color: #555; text-align: center; margin-top: 50px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="title-block">
+    <div class="label">Dark Elf Films — Killing Kin</div>
+    <h1>Platform Cadence</h1>
+    <div class="subtitle">What goes where, how often, and why — the standing operating rhythm once things are running, not just the launch push.</div>
+  </div>
+
+  <div class="card tinted-orange" style="margin-bottom:32px;">
+    <span class="highlight orange">Launch is set:</span> <span class="highlight">Thursday or Friday this week (Jul 30–31)</span>. All <span class="highlight">6 episodes release together</span> as a single playlist, not episode-by-episode — see the YouTube build below.
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Cadence At A Glance</div>
+    <table>
+      <tr><th>Platform</th><th>Role</th><th>Frequency</th><th>Primary Format</th></tr>
+      <tr><td class="plat">Instagram</td><td class="mono">North Star</td><td class="mono">4–5 Reels / wk + daily Stories</td><td>Hook-forward BTS reels</td></tr>
+      <tr><td class="plat">YouTube</td><td class="mono">Full Commit</td><td class="mono">3–4 Shorts / wk + 1 long-form</td><td>Shorts mirror IG winners</td></tr>
+      <tr><td class="plat">Facebook</td><td class="mono">Auto-Post</td><td class="mono">Mirrors Instagram</td><td>No unique content</td></tr>
+      <tr><td class="plat">TikTok</td><td class="mono">Cross-Post</td><td class="mono">Reactive — winners only</td><td>Repost proven hits</td></tr>
+    </table>
+    <div class="section-sub" style="margin-top:14px; margin-bottom:0;">This baseline can flex up during a launch push — Instagram has already run 2–3 Reels in a single day with all of them getting hits, and Stories spiking to 3–4x/day on heavy days. The table above is what it settles back to after, not a hard ceiling.</div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">The Platforms, In Depth</div>
+    <div class="section-sub">What goes up, how it's paced, and the reasoning behind both — grounded in what these accounts are already showing, not general best practice.</div>
+
+    <div class="plat-block">
+      <div class="plat-head">
+        <h3>Instagram</h3>
+        <span class="role-tag north-star">North Star</span>
+      </div>
+      <div class="whw">
+        <div class="whw-row">
+          <div class="whw-tag what">What</div>
+          <div class="whw-body">Reels carry the weight — hook-forward text overlays, BTS/personality moments (makeup chair, director candids, on-set banter). Stories fill the space between reels as connective tissue: quick, unpolished, frequent. Feed/carousel posts are occasional, reserved for produced pieces — poster art, cast photography. <span class="figure">Sequencing tactic:</span> front-load Stories with the most engaging content first, then sandwich the Killing Kin CTA story in right after an outlier hits — riding a hot story's momentum into the ask instead of posting the CTA cold. This isn't just a launch-week move — see the standing tactic below.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag how">How</div>
+          <div class="whw-body"><span class="figure">4–5 Reels per week</span> at baseline — proven to flex up to <span class="figure">2–3 Reels/day</span> during a launch push without falling off. Stories <span class="figure">daily</span>, spiking to <span class="figure">3–4/day</span> in bursts (at least once every two days). One carousel/feed post per week.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag why">Why</div>
+          <div class="whw-body">536 followers, but reels are already pulling <span class="figure">690–5,775 views</span> — well beyond follower count, real algorithmic reach. Stories back this up directly: averaging <span class="figure">~2.5K views</span>, trending up, with one outlier hitting <span class="figure">7K in about 6 hours</span>. This is the account with proof the pattern works; it sets the pace for everywhere else.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card tinted-blue" style="margin-top:-6px; margin-bottom:24px;">
+      <span class="highlight blue">Standing tactic — Stories → Killing Kin, ongoing.</span> Every time a Story is clearly landing, that's a chance to redirect some of that traffic to Killing Kin on YouTube — not just through launch, this runs indefinitely as part of the standard rhythm. Two ways to execute it: put the YouTube link directly on the high-performing story itself, or post it clean and follow immediately with a second, simple story whose only job is the Killing Kin CTA. Either way, the ask rides a hot story's momentum instead of going out cold. Build this into how Stories get posted as a habit, not a launch-only move — it's the ongoing, lowest-effort way to keep funneling warm traffic toward Killing Kin long after launch week is over.
+    </div>
+
+    <div class="plat-block">
+      <div class="plat-head">
+        <h3>YouTube</h3>
+        <span class="role-tag commit">Full Commit</span>
+      </div>
+      <div class="whw">
+        <div class="whw-row">
+          <div class="whw-tag what">What</div>
+          <div class="whw-body">Shorts mirror whatever's winning on Instagram, plus dedicated BTS cut for the format. Long-form carries bigger behind-the-scenes pieces now. All 6 episodes release together: a single playlist chaining all six back-to-back, set as the channel's featured/top section, so any visitor lands directly in the full watch-through, not one episode. Titles and hashtags stay consistent on every upload — "Vertical Series" in the title, <span class="figure">#verticalseries #BTS #film</span> every time.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag how">How</div>
+          <div class="whw-body"><span class="figure">3–4 Shorts per week</span>, <span class="figure">one long-form upload per week</span> baseline (biweekly if bandwidth is tight). <span class="highlight">New rule, post-launch:</span> pause regular Shorts posting for several days (up to a week) once Killing Kin is live, so the Shorts tab isn't diluted with unrelated content — resume normal cadence after. Revisit tags/title/thumbnail/description roughly <span class="figure">every 4 weeks</span> to check search ranking — SEO here is ongoing maintenance, not a one-time step at upload.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag why">Why</div>
+          <div class="whw-body">254 subscribers, 85 videos — already the most active platform. The "can of sauce as a weapon" BTS short pulled <span class="figure">3.7K views</span> against the official trailer short's <span class="figure">850</span> — the same BTS-over-polish pattern from Instagram, confirmed independently here. Live proof metadata alone matters: one reel stuck at ~7 views got a new thumbnail and a more character-forward title, then hit <span class="figure">~1,000 views in 9 days</span> with zero new content shot.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-block">
+      <div class="plat-head">
+        <h3>Facebook</h3>
+        <span class="role-tag minimal">Auto-Post</span>
+      </div>
+      <div class="whw">
+        <div class="whw-row">
+          <div class="whw-tag what">What</div>
+          <div class="whw-body">A full mirror of Instagram. No content made specifically for this platform.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag how">How</div>
+          <div class="whw-body">Auto-post via crosspost, <span class="figure">spot-checked weekly</span> for rendering issues — captions or aspect ratio occasionally break on crosspost.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag why">Why</div>
+          <div class="whw-body">1.2K followers, but posting activity here is brand new (~1 month in) and reel views (<span class="figure">35–295</span>) are low relative to the page's size. Not enough signal yet to justify dedicated content — the audience size doesn't currently reward the extra effort.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-block">
+      <div class="plat-head">
+        <h3>TikTok</h3>
+        <span class="role-tag minimal">Cross-Post</span>
+      </div>
+      <div class="whw">
+        <div class="whw-row">
+          <div class="whw-tag what">What</div>
+          <div class="whw-body">Only content that's already proven itself on Instagram or YouTube. No original TikTok production.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag how">How</div>
+          <div class="whw-body">Reactive, not scheduled — whenever something clears the "real winner" bar elsewhere, it goes up here within a day or two while it's still current.</div>
+        </div>
+        <div class="whw-row">
+          <div class="whw-tag why">Why</div>
+          <div class="whw-body">Smallest account (34 followers), but the top video still hit <span class="figure">~41x</span> follower count in views. The algorithm clearly rewards good content here too — it's just not the platform worth spending original production time on yet. Also a hard platform floor, not a strategy choice: the bio link can't go live until the account crosses <span class="figure">1,000 followers</span>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Content Mix Principle</div>
+    <div class="card tinted-orange">
+      <span class="highlight orange">Lean BTS, not polish.</span> Across every platform, deliberately imperfect and authentic beats produced and trailer-style — that's not a preference, it's what the numbers already show, independently, in three places.
+    </div>
+    <div class="card">
+      <span class="highlight">Defining a real winner:</span> a post doing roughly <span class="highlight orange">100x</span> the account's normal view count is the bar for "this actually broke out" — their own baseline, not an industry benchmark. Don't expect that breakout by launch specifically — real outliers tend to surface after real volume, not from any single week. That's what triggers "double down on what's proven," not launch week itself.
+    </div>
+    <div class="card tinted-green">
+      <span class="highlight green">Consistency before intensity.</span> Hold the cadence above steady before chasing polish or virality directly. Winners get found through volume first — then double down on whatever's proven.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Ownership & Bandwidth</div>
+    <div class="section-sub">Who's actually running each platform day to day.</div>
+    <div class="card">
+      Jonathan currently handles YouTube (leaning Shorts over long-form). Hannah handles TikTok and Facebook, and will start helping with YouTube going forward as it becomes the primary vertical-series landing ground.
+    </div>
+    <div class="card tinted-orange">
+      <span class="highlight orange">One platform, one app.</span> If bandwidth gets tight, the fix isn't spreading thinner across all four platforms evenly — it's deliberately pulling back on one (TikTok is the obvious candidate) for a couple of weeks to concentrate on Instagram and YouTube, the two platforms actually carrying Killing Kin's launch.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">The Launch Arc — Countdown Through Steady State</div>
+    <div class="section-sub">The baseline table above is the floor, not the whole picture. This is what intensity actually looks like moving through it — the final 48 hours, the launch hour itself, the elevated week after, and the taper back down. With launch landing Thursday or Friday this week, T-48H starts within the next day.</div>
+
+    <div class="cd-chart">
+      <div class="cd-bars">
+        <div class="cd-bar-wrap">
+          <div class="cd-bar" style="height:38%; background: linear-gradient(180deg, #c9a468, #a67c3d);">
+            <div class="cd-val" style="color:#d4a866;">2 Days</div>
+          </div>
+        </div>
+        <div class="cd-bar-wrap">
+          <div class="cd-bar" style="height:58%; background: linear-gradient(180deg, #f0b344, #d99a2b);">
+            <div class="cd-val" style="color:#f0b344;">Specific</div>
+          </div>
+        </div>
+        <div class="cd-bar-wrap">
+          <div class="cd-bar" style="height:78%; background: linear-gradient(180deg, #fdba74, #fb923c);">
+            <div class="cd-val" style="color:#fdba74;">Final Beat</div>
+          </div>
+        </div>
+        <div class="cd-bar-wrap">
+          <div class="cd-bar" style="height:100%; background: linear-gradient(180deg, #fca5a5, #f87171);">
+            <div class="cd-val" style="color:#fca5a5;">Live</div>
+          </div>
+        </div>
+        <div class="cd-bar-wrap">
+          <div class="cd-bar" style="height:56%; background: linear-gradient(180deg, #86efac, #4ade80);">
+            <div class="cd-val" style="color:#86efac;">Elevated</div>
+          </div>
+        </div>
+        <div class="cd-bar-wrap">
+          <div class="cd-bar" style="height:32%; background: linear-gradient(180deg, #93c5fd, #60a5fa);">
+            <div class="cd-val" style="color:#93c5fd;">Floor</div>
+          </div>
+        </div>
+      </div>
+      <div class="cd-labels">
+        <div><div class="cname">T-48H</div><div class="ctime">2 days out</div></div>
+        <div><div class="cname">T-24H</div><div class="ctime">1 day out</div></div>
+        <div><div class="cname">T-12H</div><div class="ctime">Morning of</div></div>
+        <div><div class="cname">Launch</div><div class="ctime">Hour it's live</div></div>
+        <div><div class="cname">Sustain</div><div class="ctime">Week after</div></div>
+        <div><div class="cname">Steady</div><div class="ctime">Ongoing</div></div>
+      </div>
+    </div>
+
+    <div class="phase-detail p-t48">
+      <div class="pd-title">T-minus 48 Hours — "2 days" framing</div>
+      Countdown post, hook-forward. <span class="highlight">Instagram primary, YouTube mirrored</span>, Facebook auto-posts from Instagram as usual. TikTok stays dark here — there's nothing proven yet to repost, and an original TikTok countdown post breaks the platform's cross-post-only role. Copy needs a real clock behind it (an actual release date), not invented scarcity.
+    </div>
+    <div class="phase-detail p-t24">
+      <div class="pd-title">T-minus 24 Hours — raise the specificity</div>
+      Same Instagram + YouTube pairing, Facebook mirroring. The escalation from T-48 is concrete detail — a clip, a cast callout, a specific reason to be there day-of — not just repeating "coming soon" louder. TikTok still dark, same logic as T-48.
+    </div>
+    <div class="phase-detail p-t12">
+      <div class="pd-title">T-minus 12 Hours — final anticipation beat</div>
+      No new information here, pure anticipation — the tightest post of the three, designed to keep the countdown building without repeating what's already been said.
+    </div>
+    <div class="phase-detail p-launchhour">
+      <div class="pd-title">Launch — the hour it goes live</div>
+      The full release sequence, in order: <span class="highlight">Instagram</span> primary release post/reel, hook-forward → <span class="highlight">YouTube</span> mirrored with an optimized title and description, not a raw upload → <span class="highlight">Facebook</span> auto-posts from Instagram → <span class="highlight">TikTok</span> native repost of the release content. This is TikTok's first appearance anywhere in the countdown arc — it stayed dark through T-48/T-24/T-12 specifically so it could cross-post an actual proven asset now, consistent with its cross-post-only role everywhere else in this plan. All 6 episodes go up together — the YouTube step includes publishing the full back-to-back playlist and setting it as the channel's featured section, and regular Shorts posting pauses starting this hour (see YouTube, above).
+    </div>
+    <div class="phase-detail p-sustain">
+      <div class="pd-title">Sustain — the week after, still elevated</div>
+      Cadence doesn't drop straight to baseline the day after launch. Posting holds well above the standing baseline through the following week, comments get answered in real time while attention is at its peak, and this is also where the data shows what's actually landing, informing what gets doubled down on next. Regular Shorts posting stays paused through this window so the Shorts tab keeps surfacing Killing Kin first.
+    </div>
+    <div class="phase-detail p-steady">
+      <div class="pd-title">Steady State — back to the floor</div>
+      Once the sustain week's data shows what actually landed, cadence settles back to the standing baseline at the top of this document — 4–5 Reels/week + daily Stories on Instagram, 3–4 Shorts + one long-form on YouTube, Facebook mirroring, TikTok reactive. Regular Shorts posting resumes here. The Stories → Killing Kin standing tactic (see Instagram, above) keeps running indefinitely from here on — it doesn't stop when launch week ends. During any lull between productions, cycle back through the proven back-catalog rather than posting nothing — short-form content reaches new eyeballs even on a repeat, since it doesn't build the same depth of relationship long-form does. Not a step down in effort — the return to "consistency before intensity," the same principle that got these accounts here in the first place.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Not Covered In This Phase</div>
+    <div class="card">
+      <ul class="x-list">
+        <li>Paid ad spend or platform boosting</li>
+        <li>Platform-specific paid growth tactics</li>
+        <li>Production calendar for other titles (Viva Humanity, Relic)</li>
+        <li>Ongoing correction of execution beyond the alignment session</li>
+        <li>A future "leaving the platform" scarcity relaunch — only relevant if Killing Kin is ever picked up by a platform exclusively and has to come off YouTube</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footnote">Killing Kin — Platform Cadence · Dark Elf Films × MarketFlow LLC</div>
+
+</div>
+</body>
+</html>
