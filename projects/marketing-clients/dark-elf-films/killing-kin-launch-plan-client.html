@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Killing Kin — Launch Rollout Plan</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0d0d;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 70px 20px 110px;
+  }
+
+  .page { max-width: 740px; margin: 0 auto; }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 22px;
+  }
+
+  .title-block { margin-bottom: 48px; }
+
+  .title-block h1 {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.08;
+    color: #fff;
+    margin: 8px 0 14px;
+    text-wrap: balance;
+  }
+
+  .title-block .subtitle { color: #888; font-size: 16px; max-width: 540px; line-height: 1.6; }
+
+  .section { margin-bottom: 44px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .section-sub { font-size: 14px; color: #777; margin-bottom: 22px; line-height: 1.6; max-width: 560px; }
+
+  .card {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 26px 30px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .card.tinted-orange { background: #241a08; border-color: rgba(251,191,36,0.12); }
+  .card.tinted-blue   { background: #0c1a2d; border-color: rgba(96,165,250,0.12); }
+  .card.tinted-green  { background: #0f2015; border-color: rgba(74,222,128,0.12); }
+
+  .green  { color: #4ade80; }
+  .orange { color: #fbbf24; }
+  .blue   { color: #60a5fa; }
+  .muted  { color: #777; }
+
+  .highlight { font-weight: 600; }
+  .highlight.green  { color: #4ade80; }
+  .highlight.orange { color: #fbbf24; }
+  .highlight.blue   { color: #60a5fa; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #777; padding: 0 0 12px;
+  }
+  td { padding: 11px 12px 11px 0; color: #bbb; border-top: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  td.mono { color: #999; font-variant-numeric: tabular-nums; }
+
+  .role-card {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 20px 26px;
+    margin-bottom: 10px;
+  }
+  .role-card .role-name {
+    font-size: 15px; font-weight: 700; color: #e5e5e5; margin-bottom: 5px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .role-card .role-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 11px; border-radius: 20px;
+  }
+  .role-tag.north-star { background: #14301f; color: #4ade80; }
+  .role-tag.commit { background: #10233d; color: #60a5fa; }
+  .role-tag.minimal { background: #222; color: #888; }
+  .role-card .role-desc { font-size: 13.5px; color: #888; line-height: 1.55; }
+
+  hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 44px 0; }
+
+  /* --- Whisper / Tease / Shout intensity chart --- */
+  .wts-chart {
+    background: #131313;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 32px 28px 20px;
+    margin-bottom: 14px;
+  }
+  .wts-bars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: end;
+    gap: 14px;
+    height: 190px;
+    margin-bottom: 4px;
+  }
+  .wts-bar-wrap { display: flex; flex-direction: column; align-items: stretch; height: 100%; justify-content: flex-end; }
+  .wts-bar {
+    width: 100%;
+    border-radius: 8px 8px 3px 3px;
+    position: relative;
+    min-height: 18px;
+  }
+  .wts-bar .wts-val {
+    position: absolute;
+    top: -22px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .wts-labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .wts-labels div { text-align: center; }
+  .wts-labels .wname { font-size: 13px; font-weight: 700; color: #e5e5e5; margin-bottom: 3px; }
+  .wts-labels .wtime { font-size: 10.5px; color: #666; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .phase-detail {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.65;
+  }
+  .phase-detail .pd-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .phase-detail.p-whisper { border-color: #a67c3d; }
+  .phase-detail.p-whisper .pd-title { color: #d4a866; }
+  .phase-detail.p-tease { border-color: #d99a2b; }
+  .phase-detail.p-tease .pd-title { color: #f0b344; }
+  .phase-detail.p-shout { border-color: #fb923c; }
+  .phase-detail.p-shout .pd-title { color: #fdba74; }
+  .phase-detail.p-launch { border-color: #f87171; }
+  .phase-detail.p-launch .pd-title { color: #fca5a5; }
+  .phase-detail.p-sustain { border-color: #4ade80; }
+  .phase-detail.p-sustain .pd-title { color: #86efac; }
+
+  .action-list { list-style: none; padding: 0; }
+  .action-list li {
+    display: flex; gap: 14px; padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; color: #bbb;
+  }
+  .action-list li:last-child { border-bottom: none; }
+  .action-list li .num { font-size: 12px; font-weight: 700; color: #60a5fa; min-width: 20px; padding-top: 2px; }
+
+  .x-list { list-style: none; padding: 0; }
+  .x-list li {
+    font-size: 13.5px; color: #999; padding: 7px 0; display: flex; align-items: flex-start; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .x-list li:last-child { border-bottom: none; }
+  .x-list li::before { content: "—"; color: #555; flex-shrink: 0; }
+
+  .footnote { font-size: 12px; color: #555; text-align: center; margin-top: 50px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="title-block">
+    <div class="label">Dark Elf Films — Killing Kin</div>
+    <h1>Launch Rollout Plan</h1>
+    <div class="subtitle">What goes up, on which platform, and how the intensity builds — from first reactivation through launch day and the week after.</div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">What's Already Working</div>
+    <div class="section-sub">The trailer and announcement are already live and already performing — the opportunity is centralizing and re-promoting what's proven, not starting from zero.</div>
+    <table>
+      <tr><th>Asset</th><th>Platform</th><th>Engagement</th></tr>
+      <tr><td>Official teaser trailer</td><td class="mono">YouTube</td><td class="mono">175 views</td></tr>
+      <tr><td>Poster / announcement post</td><td class="mono">Instagram</td><td class="mono">174 likes</td></tr>
+      <tr><td>Title card / teaser</td><td class="mono">TikTok</td><td class="mono">130 views</td></tr>
+      <tr><td>General BTS library</td><td class="mono">IG / YT / TikTok</td><td>The proven-performing content type across every platform</td></tr>
+    </table>
+    <div class="card tinted-orange" style="margin-top:14px;">
+      <span class="highlight orange">The pattern is consistent across three separate platforms:</span> deliberately imperfect, behind-the-scenes, personality-driven content is outperforming polished, trailer-style posts — on Instagram, on YouTube, and at smaller scale on TikTok. That's not a hunch, it's independently confirmed three times. This rollout leans into it everywhere.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Platform Focus</div>
+    <div class="role-card">
+      <div class="role-name">Instagram <span class="role-tag north-star">North Star</span></div>
+      <div class="role-desc">Reels pulling well beyond follower count — the proven hook/BTS pattern lives here first.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">YouTube <span class="role-tag commit">Full Commit</span></div>
+      <div class="role-desc">Same pattern, independently confirmed — behind-the-scenes content already outperforming the official trailer.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">Facebook <span class="role-tag minimal">Auto-Post</span></div>
+      <div class="role-desc">Mirrors Instagram automatically — no dedicated content strategy needed here yet.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">TikTok <span class="role-tag minimal">Cross-Post</span></div>
+      <div class="role-desc">Repurpose Instagram/YouTube winners — the same relative pattern holds, even at smaller scale.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">The Whisper, Tease, Shout Method</div>
+    <div class="section-sub">The rollout isn't one push on launch day — it's a deliberate build in volume and specificity, so that by the time Killing Kin actually drops, the audience already feels like they're part of something happening, not being told about something that already happened.</div>
+
+    <div class="wts-chart">
+      <div class="wts-bars">
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:26%; background: linear-gradient(180deg, #c9a468, #a67c3d);">
+            <div class="wts-val" style="color:#d4a866;">Quiet</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:46%; background: linear-gradient(180deg, #f0b344, #d99a2b);">
+            <div class="wts-val" style="color:#f0b344;">Building</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:76%; background: linear-gradient(180deg, #fdba74, #fb923c);">
+            <div class="wts-val" style="color:#fdba74;">Loud</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:100%; background: linear-gradient(180deg, #fca5a5, #f87171);">
+            <div class="wts-val" style="color:#fca5a5;">Peak</div>
+          </div>
+        </div>
+        <div class="wts-bar-wrap">
+          <div class="wts-bar" style="height:52%; background: linear-gradient(180deg, #86efac, #4ade80);">
+            <div class="wts-val" style="color:#86efac;">Steady</div>
+          </div>
+        </div>
+      </div>
+      <div class="wts-labels">
+        <div><div class="wname">Whisper</div><div class="wtime">T-minus 3wk</div></div>
+        <div><div class="wname">Tease</div><div class="wtime">T-minus 2wk</div></div>
+        <div><div class="wname">Shout</div><div class="wtime">T-minus 1wk</div></div>
+        <div><div class="wname">Launch</div><div class="wtime">Release day</div></div>
+        <div><div class="wname">Sustain</div><div class="wtime">Week after</div></div>
+      </div>
+    </div>
+
+    <div class="phase-detail p-whisper">
+      <div class="pd-title">Whisper — reactivate, no hard sell</div>
+      Steady, low-key posting resumes on Instagram and YouTube — the BTS/candid content already proven to work. No Killing Kin push yet, just consistent presence. The goal here is momentum, not announcement.
+    </div>
+    <div class="phase-detail p-tease">
+      <div class="pd-title">Tease — Killing Kin enters the feed</div>
+      Hook-forward posts, cast candids, behind-the-scenes from the shoot. The existing teaser and poster get a second life — re-surfaced, re-cut, re-promoted. Specificity rises: this is real, it's coming, here's a taste.
+    </div>
+    <div class="phase-detail p-shout">
+      <div class="pd-title">Shout — daily, cross-platform, countdown</div>
+      Frequency increases across every platform. A fixed countdown begins — 48 hours out, 24 hours out, 12 hours out — each post raising the specificity. Every post keeps pointing to the same place: the consolidated bio link and captions all drive to YouTube, no new destination introduced this late.
+    </div>
+    <div class="phase-detail p-launch">
+      <div class="pd-title">Launch — the release sequence</div>
+      Instagram first, YouTube mirrored with an optimized title and description, Facebook auto-posting, TikTok reposting the release content natively. Full attention window, comments answered in real time.
+    </div>
+    <div class="phase-detail p-sustain">
+      <div class="pd-title">Sustain — hold the cadence, don't vanish</div>
+      Posting settles to a steady, still-elevated rhythm. Comments keep getting answered while interest is highest. This is also where the data shows what actually landed — informing what comes next.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Launch Day — Release Sequence</div>
+    <div class="card">
+      <ul class="action-list">
+        <li><span class="num">01</span> Instagram — primary release post/reel, hook-forward</li>
+        <li><span class="num">02</span> YouTube — mirrored release, optimized title and description</li>
+        <li><span class="num">03</span> Facebook — auto-post from Instagram</li>
+        <li><span class="num">04</span> TikTok — native repost of the release content</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Two Fast Wins, Before Anything Else</div>
+    <div class="section-sub">One clear destination, everywhere — that's the actual highest-leverage move here. Not the website: the website stays a landing page for investors and legitimacy, not a traffic destination. Every call-to-action points to YouTube instead.</div>
+    <div class="card tinted-blue">
+      <span class="highlight blue">Fix and simplify the Instagram bio link.</span> There are 3 links right now, and one — the Killing Kin teaser — is broken. Consolidate to one link, pointing straight to YouTube, for the launch window. Less is more: one clear place to go beats three options, even a tidy link-tree.
+    </div>
+    <div class="card tinted-green">
+      <span class="highlight green">Swap the YouTube featured video, sharpen the thumbnail.</span> Killing Kin should be the first thing a new visitor sees — not older content. The current thumbnail doesn't create a question; it should make someone wonder "what's happening here?" before they even click.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Capture — Confirmed Not This Round</div>
+    <div class="section-sub">This launch is traffic-only, by design — get viewership up first, build the pitch-ready proof, worry about capturing an audience once there's real volume to capture.</div>
+    <div class="card">
+      Once traffic grows past where it sits today, the same idea used for the Whisper → Tease → Shout build applies to a future capture flow too: don't make the signup the reward, make it the bridge — the next release is what actually closes the loop. Worth building for launch two or three, not this one.
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Not Covered In This Phase</div>
+    <div class="card">
+      <ul class="x-list">
+        <li>Platform/distribution outreach (LinkedIn, direct pitching)</li>
+        <li>Ongoing weekly strategy calls</li>
+        <li>Meta monetization tracking</li>
+        <li>Other titles (Viva Humanity, Relic)</li>
+        <li>Paid-access / gated-release funnel — confirmed traffic-only for this launch, no gating</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footnote">Killing Kin — Rollout Plan · Dark Elf Films × MarketFlow LLC</div>
+
+</div>
+</body>
+</html>
